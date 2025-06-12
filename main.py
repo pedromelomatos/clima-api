@@ -7,8 +7,8 @@ load_dotenv()
 url_pura = "http://api.weatherapi.com/v1/current.json"
 chave_api = os.getenv("key")
 
-url = f"{url_pura}?key={chave_api}&q=London"
+url = f"{url_pura}?key={chave_api}&q=Guarulhos"
 request = requests.get(url)
 clima = request.json()
-print(clima)
+print(clima['current']['temp_c'])
 
