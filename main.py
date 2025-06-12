@@ -1,23 +1,19 @@
-from flask import Flask, render_template
-import requests
-from dotenv import load_dotenv
-import os
+from flask import Flask, render_template, request, redirect, url_for
+from cidade_escolhida import cidade_escolhida
 
-load_dotenv()
+
 app = Flask(__name__)
+app.register_blueprint(cidade_escolhida, url_prefix='/cidade')
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def homepage():
-    return render_template("index.html")
+    if request.method == 'GET':
+        return render_template("index.html")
+    elif request.method == 'POST':
+        cidade = request.form['cidadeinput'].lower()
+        return redirect(url_for('cidade_escolhida_bp.clima', cidade=cidade)) #passando a variavel cidade como parametro em cidade_escolhida.py, ou seja, passando variáveis não só entre funções, mas também entre arquivos diferentes com blueprints.
 
 
-url_pura = "http://api.weatherapi.com/v1/current.json"
-chave_api = os.getenv("key")
-
-url = f"{url_pura}?key={chave_api}&q=guarulhos"
-request = requests.get(url)
-clima_geral = request.json()
-clima_city = clima_geral['current']['temp_c']
 
 if __name__ == '__main__':
     app.run(debug=True)

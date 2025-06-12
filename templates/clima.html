@@ -11,13 +11,26 @@
 </head>
 <body>
     <div id="divcentral">
-        <span id="titulo">Quer saber o clima da sua cidade? </span>
+        <span id="titulo">{{ clima_city }}°C </span>
+
         <form method="post">
         <input type="text" id="text" placeholder="Digite o nome da sua cidade aqui" name="cidadeinput">
         <button id="enviar">Enviar</button>
         </form>
     </div>
 
+    <script>
+        let body = document.querySelector("body")
+        let temperatura = Number("{{ clima_city }}")
+        if (temperatura < 20){
+            body.style.backgroundImage = "url(/static/frio.png)"
+        }else if(temperatura < 30 && temperatura > 19){
+            body.style.backgroundImage = "url(/static/tranquilo.png)"
+        }else{
+            body.style.backgroundImage = "url(/static/calor.png)"
+        }
+
+    </script>
     
 </body>
 </html>
