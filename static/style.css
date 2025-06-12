@@ -1,0 +1,43 @@
+body{
+    font-family:  "Do Hyeon", sans-serif;
+    background-image: url(bg-home.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#divcentral{
+    color: white;
+    text-shadow:   -1px -1px 0 black,
+                    1px -1px 0 black,
+                   -1px  1px 0 black,
+                    1px  1px 1pc black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 99vh;
+    width: 100vh;
+    margin: 0px;
+    flex-direction: column;
+
+}
+
+input, button{
+    font-family:  "Do Hyeon", sans-serif;
+}
+
+input#text{
+    width: 80%;
+}
+
+button#enviar{
+    margin-top: 10px;
+    width: 81%;
+}
+
+#titulo{
+    font-size: 50px;
+}
